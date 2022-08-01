@@ -1,0 +1,34 @@
+.container-count-items {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-left: 100px;
+    border: solid 1px #111;
+
+    .count-items {
+        display: flex;
+        justify-content: space-evenly;
+        border-bottom: solid 1px #111;
+        list-style: none;
+        padding: 0;
+        padding: 10px 15px;
+        margin-bottom: 0;
+        li {
+            width: 33%;
+            text-align: center;
+
+            button {
+                width: 100%;
+                color: #057;
+                border: none;
+            }
+        }
+    }
+
+    .btn-agr {
+        border: none;
+        text-align: center;
+        color: #057;
+        padding: 10px 15px;
+    }
+}

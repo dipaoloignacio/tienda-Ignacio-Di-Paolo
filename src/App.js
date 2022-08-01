@@ -5,7 +5,9 @@ import 'bootstrap/dist/js/bootstrap.js';
 import './scss/app.scss';
 import { main } from '@popperjs/core';
 
+
 function App() {
+    
   return (
 
     <div className="App-header">
@@ -13,7 +15,7 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <ItemListContainer greeting={'Hola mundo'} />
+        <ItemListContainer />
       </main>
     </div>
   );

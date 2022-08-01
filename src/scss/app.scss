@@ -1,5 +1,10 @@
+// <---PARTIALS--->
 @import './partials/variables';
 @import './partials/general';
+
+
+// <---COMPONENTS--->
 @import '../components/navbar/NavBar';
 @import '../components/cartWidget/CartWidget';
 @import '../components/itemListContainer/ItemListContainer';
+@import '../components/itemCount/ItemCount';
