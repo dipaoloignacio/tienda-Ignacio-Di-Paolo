@@ -7,17 +7,11 @@ import { main } from '@popperjs/core';
 
 
 function App() {
-    
   return (
-
-    <div className="App-header">
-      <header>
-        <NavBar />
-      </header>
-      <main>
-        <ItemListContainer />
-      </main>
-    </div>
+    <>
+      <NavBar />
+      <ItemListContainer />
+    </>
   );
 }
 

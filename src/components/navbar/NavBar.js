@@ -1,4 +1,5 @@
 import CartWidget from "../cartWidget/CartWidget";
+
 function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg">
@@ -30,7 +31,6 @@ function NavBar() {
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
                     </form>
-
                 </div>
             </div>
         </nav>
