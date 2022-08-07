@@ -8,7 +8,12 @@ function ItemList(props) {
 
         const calcularItems = (cantidad) => {
           producto.stock -= cantidad;
-          console.log("accion realizada"+producto.stock);
+          if (producto.stock < 0) {
+            console.log('Lo sentimos producto agotado.')
+            producto.stock=0;
+          } else {
+            console.log("accion realizada");
+          }
         }
         return (
           <Item
