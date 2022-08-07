@@ -1,53 +1,62 @@
 const productos = [{
     "id": 1,
-    "tipo": "Brass",
-    "price": 33,
-    "stock": 89
+    "tipo": "Wood",
+    "price": 61,
+    "img": "http://dummyimage.com/200x100.png/cc0000/ffffff",
+    "stock": 67
 }, {
     "id": 2,
-    "tipo": "Aluminum",
-    "price": 24,
-    "stock": 84
+    "tipo": "Plexiglass",
+    "price": 100,
+    "img": "http://dummyimage.com/200x100.png/ff4444/ffffff",
+    "stock": 63
 }, {
     "id": 3,
-    "tipo": "Rubber",
-    "price": 21,
-    "stock": 49
+    "tipo": "Granite",
+    "price": 60,
+    "img": "http://dummyimage.com/200x100.png/cc0000/ffffff",
+    "stock": 6
 }, {
     "id": 4,
-    "tipo": "Glass",
-    "price": 7,
-    "stock": 46
+    "tipo": "Brass",
+    "price": 51,
+    "img": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+    "stock": 58
 }, {
     "id": 5,
-    "tipo": "Rubber",
+    "tipo": "Granite",
     "price": 30,
-    "stock": 36
+    "img": "http://dummyimage.com/200x100.png/dddddd/000000",
+    "stock": 23
 }, {
     "id": 6,
-    "tipo": "Wood",
-    "price": 39,
-    "stock": 5
+    "tipo": "Aluminum",
+    "price": 36,
+    "img": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+    "stock": 34
 }, {
     "id": 7,
     "tipo": "Vinyl",
-    "price": 50,
-    "stock": 57
+    "price": 3,
+    "img": "http://dummyimage.com/200x100.png/ff4444/ffffff",
+    "stock": 1
 }, {
     "id": 8,
-    "tipo": "Vinyl",
-    "price": 91,
-    "stock": 36
+    "tipo": "Granite",
+    "price": 62,
+    "img": "http://dummyimage.com/200x100.png/ff4444/ffffff",
+    "stock": 68
 }, {
     "id": 9,
-    "tipo": "Aluminum",
-    "price": 58,
-    "stock": 2
+    "tipo": "Brass",
+    "price": 52,
+    "img": "http://dummyimage.com/200x100.png/cc0000/ffffff",
+    "stock": 61
 }, {
     "id": 10,
-    "tipo": "Plexiglass",
-    "price": 26,
-    "stock": 62
+    "tipo": "Aluminum",
+    "price": 82,
+    "img": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+    "stock": 65
 }]
-
 export default productos

@@ -22,6 +22,7 @@ function ItemList(props) {
             tipo={producto.tipo}
             price={producto.price}
             stock={producto.stock}
+            img={producto.img}
             cant={calcularItems}
           />
         );

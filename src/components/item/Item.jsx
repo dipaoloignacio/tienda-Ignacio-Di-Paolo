@@ -6,6 +6,7 @@ function Item(props) {
         <div className='contenedor-procuts'>
             <div >
                 <div className='producto'>
+                    <img src={props.img} alt="" />
                     <h4>{props.tipo}</h4>
                     <p>disponibilidad: {props.stock} u.</p>
                     <p>precio: $ ${props.price}</p>
