@@ -1,0 +1,22 @@
+.contenedor-procuts {
+    .producto {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 100px;
+        margin-top: 100px;
+        width: 200px;
+        height: 100px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 30px;
+        padding: 10px;
+        background-color: #333;
+        color: $color-text-nav;
+
+        p {
+            font-size: 1rem;
+            margin: 0;
+        }
+    }
+}

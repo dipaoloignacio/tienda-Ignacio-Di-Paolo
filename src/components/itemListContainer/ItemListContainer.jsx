@@ -1,28 +1,32 @@
 import React from 'react'
-import ItemCount from '../itemCount/ItemCount';
-import { useState } from 'react';
+import ItemList from '../itemList/ItemList';
+import productos from '../../productos/productos'
+import { useState, useEffect } from 'react';
+
+function traerProductos() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(productos), 2000);
+  });
+}
 
 function ItemListContainer() {
-  const producto = {
-    tipo: 'Pelota',
-    stock: 8
-  }
 
-  const calcularItems = (cantidad) => {
-    console.log("Se agregaron tus productos con exito.");
-  }
+  const [prod, setProd] = useState([]);
+
+  useEffect(() => {
+    traerProductos()
+      .then((respuesta) => {
+        setProd(respuesta);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
-    <div >
-      <div className='saludo'>
-        {producto.tipo}
-        <p>disponibilidad: {producto.stock} u.</p>
-      </div>
-      <div>
-        <ItemCount stock={producto.stock} calcStock={calcularItems} />
-      </div>
+    <div className='content-prod'>
+      <ItemList products={prod}/>
     </div>
-
   )
 }
 

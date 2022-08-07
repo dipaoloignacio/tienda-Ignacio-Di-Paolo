@@ -5,7 +5,6 @@ import 'bootstrap/dist/js/bootstrap.js';
 import './scss/app.scss';
 import { main } from '@popperjs/core';
 
-
 function App() {
   return (
     <>

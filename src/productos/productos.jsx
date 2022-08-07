@@ -1,0 +1,53 @@
+const productos = [{
+    "id": 1,
+    "tipo": "Brass",
+    "price": 33,
+    "stock": 89
+}, {
+    "id": 2,
+    "tipo": "Aluminum",
+    "price": 24,
+    "stock": 84
+}, {
+    "id": 3,
+    "tipo": "Rubber",
+    "price": 21,
+    "stock": 49
+}, {
+    "id": 4,
+    "tipo": "Glass",
+    "price": 7,
+    "stock": 46
+}, {
+    "id": 5,
+    "tipo": "Rubber",
+    "price": 30,
+    "stock": 36
+}, {
+    "id": 6,
+    "tipo": "Wood",
+    "price": 39,
+    "stock": 5
+}, {
+    "id": 7,
+    "tipo": "Vinyl",
+    "price": 50,
+    "stock": 57
+}, {
+    "id": 8,
+    "tipo": "Vinyl",
+    "price": 91,
+    "stock": 36
+}, {
+    "id": 9,
+    "tipo": "Aluminum",
+    "price": 58,
+    "stock": 2
+}, {
+    "id": 10,
+    "tipo": "Plexiglass",
+    "price": 26,
+    "stock": 62
+}]
+
+export default productos
