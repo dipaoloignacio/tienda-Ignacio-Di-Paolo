@@ -2,6 +2,7 @@ import React from 'react'
 import ItemCount from '../itemCount/ItemCount';
 
 function Item(props) {
+    
     return (
         <div className='contenedor-procuts'>
             <div >
@@ -12,7 +13,7 @@ function Item(props) {
                     <p>precio: $ ${props.price}</p>
                 </div>
                 <div>
-                    <ItemCount stock={props.stock} calcStock={props.cant} />
+                    <ItemCount stock={props.stock} calcStock={props.cant} id={props.id}/>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import CartWidget from "../cartWidget/CartWidget";
 
 function NavBar() {
+    
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">

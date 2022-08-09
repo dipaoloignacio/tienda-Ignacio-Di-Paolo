@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-function ItemCount({ stock, calcStock }) {
-
+function ItemCount({ stock, calcStock, id }) {
     const [countItems, setCountItems] = useState(1);
+
     const agrCarro = () => {
-        calcStock(countItems)
+        calcStock(countItems, id)
         setCountItems(1);
     }
+
     return (
         <div className='container-count-items'>
             <ul className='count-items'>
