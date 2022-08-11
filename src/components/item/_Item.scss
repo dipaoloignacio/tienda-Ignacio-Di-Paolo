@@ -1,11 +1,12 @@
 .contenedor-procuts {
+    width: 300px;
     .producto {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
         margin-top: 100px;
-        width: 210px;
+        width: 100%;
         min-height: 100px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 30px;
@@ -20,11 +21,15 @@
             font-size: 1rem;
             margin: 0;
         }
-        button{
+        img{
+            width: 290px;
+        }
+        .btn-detalle{
             border: none;
             font-size: 1rem;
             background-color: none;
             color: white;
+            text-decoration: none;
             background-color: #333;
             padding: 5px 15px;
             border: solid 1px #eee;

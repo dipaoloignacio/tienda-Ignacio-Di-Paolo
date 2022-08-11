@@ -1,8 +1,9 @@
 .container-count-items {
     display: flex;
     flex-direction: column;
-    width: 210px;
+    width: 100%;
     border: solid 1px #111;
+    background-color: #eee;
 
     .count-items {
         display: flex;
@@ -23,9 +24,12 @@
                 border: none;
             }
         }
+        .contador-prod-agr{
+            color: #111;
+        }
     }
 
-    .btn-agr {
+    .btn-agregar {
         color: #057;
         padding: 10px 15px;
         border: none;

@@ -5,15 +5,21 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import './scss/app.scss';
 import { main } from '@popperjs/core';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
-  const urlApi = "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20";
 
   return (
     <>
-      <NavBar />
-      {/* <ItemListContainer /> */}
-      <ItemDetailContainer/>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<ItemListContainer />} />
+          <Route path='/category/:tipo' element={<ItemListContainer />} />
+          <Route path='/item/:id' element={<ItemDetailContainer />} />
+          <Route path='*' element={<h1>No encontrado</h1>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

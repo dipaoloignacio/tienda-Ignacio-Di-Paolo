@@ -2,7 +2,6 @@ import React from 'react'
 import Item from '../item/Item';
 
 function ItemList(props) {
-
   const calcularItems = (cantidad, id) => {
     props.products.map((p) => {
       if (p.id === id) {
@@ -24,14 +23,14 @@ function ItemList(props) {
           <Item
             key={i}
             id={producto.id}
-            tipo={producto.tipo}
-            price={producto.price}
+            tipo={producto.name}
+            precio={producto.precio}
             stock={producto.stock}
             img={producto.img}
             cant={calcularItems}
           />
-        );
-      })};
+        )
+      })}
     </div>
   );
 };
