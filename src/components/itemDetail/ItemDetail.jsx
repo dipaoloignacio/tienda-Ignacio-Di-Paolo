@@ -1,28 +1,28 @@
 import React from 'react'
 import ItemCount from '../itemCount/ItemCount'
 
-function ItemDetail({ prod }) {
+function ItemDetail({ producto }) {
   const calcularStock = (cant) => {
-    if (prod.stock < 0) {
+    if (producto.stock < 0) {
       console.log('Lo sentimos el producto esta agotado.')
-      prod.stock = 0;
+      producto.stock = 0;
     } else {
       console.log("producto agregado.");
-      prod.stock -= cant
+      producto.stock -= cant
     }
   }
   
   return (
     <div className='producto-detail'>
-      <img src={prod.img} alt="" />
+      <img src={producto.img} alt="" />
       <div className='content-details'>
-        <h1>{prod.name}</h1>
-        <p>disponibilidad: {prod.stock} u.</p>
-        <p>precio: ${prod.precio}</p>
-        <p>peso: {prod.peso} kg</p>
-        <p>Made in: {prod.madeIn}</p>
-        <p>metodo de pago aceptado: {prod.tajetaPago}</p>
-        <ItemCount stock={prod.stock} calcStock={calcularStock} id={prod.id} />
+        <h1>{producto.name}</h1>
+        <p>disponibilidad: {producto.stock} u.</p>
+        <p>precio: ${producto.precio}</p>
+        <p>peso: {producto.peso} kg</p>
+        <p>Made in: {producto.madeIn}</p>
+        <p>metodo de pago aceptado: {producto.tajetaPago}</p>
+        <ItemCount stock={producto.stock} calcStock={calcularStock} id={producto.id} />
       </div>
     </div>
   )

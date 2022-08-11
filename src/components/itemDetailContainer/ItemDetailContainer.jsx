@@ -17,7 +17,7 @@ function ItemDetailContainer() {
     getProducto()
     .then(
       (respuesta) => { 
-        setProducto(respuesta.filter(prod => prod.id === parseInt(params.id))[0]) 
+        setProducto(respuesta.find(prod => prod.id === parseInt(params.id))) 
       }
     ).catch(
       (err) => console.log(err)
@@ -26,7 +26,7 @@ function ItemDetailContainer() {
 
   return (
     <div>
-      <ItemDetail prod={producto}/>
+      <ItemDetail producto={producto}/>
     </div>
   )
 }
