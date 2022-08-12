@@ -1,17 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemCount from '../itemCount/ItemCount'
+import Swal from 'sweetalert2';
 
 function ItemDetail({ producto }) {
-  const calcularStock = (cant) => {
-    if (producto.stock < 0) {
-      console.log('Lo sentimos el producto esta agotado.')
-      producto.stock = 0;
+  const [addProduct, setAddProduct] = useState(producto.stock);
+
+  const calcularStock = (cantidad) => {
+    if (producto.stock < cantidad) {
+      //alerta de SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Producto agotado!',
+      })
     } else {
-      console.log("producto agregado.");
-      producto.stock -= cant
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Agregado con exito',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      producto.stock -= cantidad
+      setAddProduct(producto.stock)
     }
   }
-  
+
   return (
     <div className='producto-detail'>
       <img src={producto.img} alt="" />

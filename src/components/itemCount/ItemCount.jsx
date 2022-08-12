@@ -4,8 +4,8 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 function ItemCount({ stock, calcStock, id }) {
     const [countItems, setCountItems] = useState(1);
-    const agrCarro = () => {
-        calcStock(countItems, id)
+    const agrCarro = (id) => {
+        calcStock(countItems,id)
         setCountItems(1);
     }
 
@@ -22,7 +22,7 @@ function ItemCount({ stock, calcStock, id }) {
                     <button onClick={() => countItems > 1 ? setCountItems(countItems - 1) : setCountItems(1)}><FontAwesomeIcon icon={faMinus} /> </button>
                 </li>
             </ul>
-            <button className='btn-agregar' onClick={() => agrCarro()}>Agregar al carro</button>
+            <button className='btn-agregar' onClick={() => agrCarro(id)}>Agregar al carro</button>
         </div>
     )
 }
