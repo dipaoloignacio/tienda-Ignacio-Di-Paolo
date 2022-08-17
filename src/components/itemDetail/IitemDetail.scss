@@ -31,5 +31,15 @@
         height: 400px;
     }
 
-    
+    .toCart{
+        text-decoration: none;
+        color: white;
+        margin: 10px;
+        padding: 10px 15px;
+        border: solid 1px white;
+        border-radius: 10px;
+        &:hover{
+            background-color: #444;
+        }
+    }
 }
