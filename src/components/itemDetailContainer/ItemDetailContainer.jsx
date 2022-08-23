@@ -25,8 +25,18 @@ function ItemDetailContainer() {
   }, [])
 
   return (
-    <div>
-      <ItemDetail producto={producto} />
+    <div className='container-item'>
+      {
+        Object.keys(producto).length
+          === 0 ?
+          <div className='spiner'>
+            <div className="spinner-border text-dark" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          : <ItemDetail producto={producto} />
+      }
+
     </div>
   )
 }

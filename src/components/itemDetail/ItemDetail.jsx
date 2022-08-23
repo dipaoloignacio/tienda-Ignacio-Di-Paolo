@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ItemCount from '../itemCount/ItemCount'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { cartContex } from '../../custom-context/CartContext';
+import { useContext } from 'react';
 
 function ItemDetail({ producto }) {
   const [addProduct, setAddProduct] = useState(0);
+  const { agregarAlCarro } = useContext(cartContex);
 
-  const calcularStock = (cantidad) => {
+  const addItem = (cantidad) => {
     if (producto.stock < cantidad) {
       //alerta de SweetAlert2
       Swal.fire({
@@ -22,8 +25,8 @@ function ItemDetail({ producto }) {
         showConfirmButton: false,
         timer: 1500
       })
-      producto.stock -= cantidad
-      setAddProduct(cantidad)
+      agregarAlCarro(producto, cantidad);
+      setAddProduct(cantidad);
     }
   }
 
@@ -37,12 +40,11 @@ function ItemDetail({ producto }) {
         <p>peso: {producto.peso} kg</p>
         <p>Made in: {producto.madeIn}</p>
         <p>metodo de pago aceptado: {producto.tajetaPago}</p>
-        
         {
           addProduct === 0 ?
             < ItemCount
               stock={producto.stock}
-              calcStock={calcularStock}
+              addItem={addItem}
               id={producto.id} />
             : <Link className='toCart' to="/cart">Ir al carro</Link>
         }

@@ -29,8 +29,18 @@ function ItemListContainer() {
   }, [params]);
 
   return (
-    <div className='content-prod'>
-      <ItemList products={prod} />
+    <div>
+      {
+        prod.length === 0 ?
+          <div className='list-container'>
+            <div className="spinner-border text-secondary aling-self-center" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div> :
+          <div className='content-prod'>
+            <ItemList products={prod} />
+          </div>
+      }
     </div>
   )
 }

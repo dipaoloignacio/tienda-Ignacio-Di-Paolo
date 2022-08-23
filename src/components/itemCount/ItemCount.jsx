@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-function ItemCount({ stock, calcStock, id }) {
+function ItemCount({ stock, addItem, id }) {
     const [countItems, setCountItems] = useState(1);
-    
+
     const agrCarro = (id) => {
-        calcStock(countItems, id)
+        addItem(countItems, id)
         setCountItems(1);
     }
 

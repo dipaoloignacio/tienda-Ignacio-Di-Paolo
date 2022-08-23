@@ -2,18 +2,17 @@ import React from 'react'
 import Item from '../item/Item';
 
 function ItemList(props) {
+
   const calcularItems = (cantidad, id) => {
-    props.products.map((p) => {
-      if (p.id === id) {
-        p.stock -= cantidad;
-        if (p.stock < 0) {
+    props.products.map((producto) => {
+      if (producto.id === id) {
+        if (producto.stock < 0) {
           console.log('Lo sentimos el producto esta agotado.')
-          p.stock = 0;
         } else {
           console.log("producto agregado.");
         }
       }
-    })
+    });
   }
 
   return (
