@@ -9,7 +9,7 @@ function ItemDetailContainer() {
 
   function getProducto() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(productos), 2000)
+      setTimeout(() => resolve(productos), 1)
     })
   }
 

@@ -6,18 +6,22 @@ export const cartContex = createContext([]);
 
 export function CartContextProvider({ children }) {
     const [cart, setCart] = useState([]);
+    const [cantidad, setCantidad] = useState(0)
 
     const agregarAlCarro = (producto, cantidad) => {
-        console.log(cart);
         let carrito = [...cart]
         let idInCart = false;
+        let actualizarCantidad = 0;
 
         cart.forEach(prod => {
             if (prod.id === producto.id) {
                 prod.cantidad += cantidad;
                 idInCart = true;
             }
+            actualizarCantidad += prod.cantidad;
         })
+
+        setCantidad(actualizarCantidad);
 
         if (idInCart === false) {
             carrito.push({ ...producto, cantidad: cantidad })
@@ -25,8 +29,14 @@ export function CartContextProvider({ children }) {
         }
     }
 
+    const deleteItem = (indice) => {
+        let carrito = [...cart]
+        carrito.splice(indice, 1);
+        setCart(carrito);
+    }
+
     return (
-        <cartContex.Provider value={{ cart, agregarAlCarro }}>
+        <cartContex.Provider value={{ cart, agregarAlCarro, deleteItem }}>
             {children}
         </cartContex.Provider>
     )
