@@ -12,7 +12,7 @@ function CartWidget() {
 
   cart.forEach(producto => {
     cantidad += producto.cantidad
-    totalPagar += producto.precio
+    totalPagar += (producto.precio * producto.cantidad)
   });
 
   return (

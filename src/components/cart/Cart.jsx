@@ -4,23 +4,26 @@ import { Link } from 'react-router-dom';
 import { cartContex } from '../../custom-context/CartContext';
 
 function Cart() {
-  const { cart, deleteItem } = useContext(cartContex);
+  const { cart, deleteItem,deleteCart } = useContext(cartContex);
   let totalPagar = 0;
-
-  function totalAPagar(precio) {
-    totalPagar += precio;
-  }
 
   function eliminar(indice) {
     deleteItem(indice);
   }
 
+  function totalToPay(price) {
+    totalPagar += price
+  }
+
   return (
-    <div className='cart-content'>
+    <div>
+      
+      <div className='cart-content'>
       {
         cart.length > 0 ?
           cart.map((producto, indice) => {
-            totalAPagar(producto.precio);
+            let toPay = (producto.precio * producto.cantidad);
+            totalToPay(toPay);
 
             return (
               <div className='lista-productos-cart'>
@@ -31,13 +34,16 @@ function Cart() {
                   <h5 className='tipo-producto-cart'>"{producto.name}"</h5>
                   <h5><span>Made in: </span>{producto.madeIn}</h5>
                   <p className='cantidad-prod-agr' >Cantidad: {producto.cantidad}</p>
-                  <p className='precio-prod-agr' >A pagar: $ <span className='fs-5'>{producto.precio}</span> </p>
+                  <p className='precio-prod-agr' >A pagar: $ <span className='fs-5'>{toPay}</span> </p>
                 </div>
                 <button className='btn-eliminar' onClick={() => eliminar(indice)}> Elliminar </button>
               </div>
             );
           }) : <div className='msg-empty'>Carrito vacio <Link to='/'>compra aqui</Link></div>
       }
+      </div>
+      <h1 className={cart.length > 0 ? 'total-a-pagar' : 'desactivado'}>Total a pagar: ${totalPagar}</h1>
+      <button className={ cart.length > 0 ? 'btn btn-danger mt-5' : 'desactivado'} onClick={deleteCart}>Vaciar carrito</button>
     </div>
   )
 }
