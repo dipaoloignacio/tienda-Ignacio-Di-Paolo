@@ -1,26 +1,41 @@
+//from react
 import React from 'react'
-import ItemList from '../itemList/ItemList';
-import productos from '../../productos/productos'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+//components
+import ItemList from '../itemList/ItemList';
+import Err404 from '../404/Err404';
+//FireBase
+import booksDB from '../../services/firestore';
+import { getDocs, collection } from 'firebase/firestore'
 
 function ItemListContainer() {
-  const [prod, setProd] = useState([]);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(0);
   const params = useParams();
 
   function traerProductos() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => { resolve(productos) }, 1);
+      const booksCollection = collection(booksDB, "libros");
+      getDocs(booksCollection).then(result => {
+        const dataBooks = result.docs.map(doc => {
+          return { ...doc.data(), id: doc.id }
+        })
+        resolve(dataBooks);
+      });
     });
   }
 
   useEffect(() => {
+    setLoading(1)
     traerProductos()
       .then((respuesta) => {
         if (params.tipo === undefined) {
-          setProd(respuesta)
+          setItems(respuesta)
+          setLoading(0)
         } else {
-          setProd(respuesta.filter(p => p.name === params.tipo));
+          setItems(respuesta.filter(p => p.name === params.tipo));
+          setLoading(0)
         }
       })
       .catch((err) => {
@@ -31,15 +46,19 @@ function ItemListContainer() {
   return (
     <div>
       {
-        prod.length === 0 ?
+        loading === 1 && items.length === 0 ?
           <div className='list-container'>
             <div className="spinner-border text-secondary aling-self-center" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
-          </div> :
-          <div className='content-prod'>
-            <ItemList products={prod} />
           </div>
+          :
+          loading === 0 && items.length === 0 ?
+            <Err404 />
+            :
+            <div className='content-prod'>
+              <ItemList products={items} />
+            </div>
       }
     </div>
   )

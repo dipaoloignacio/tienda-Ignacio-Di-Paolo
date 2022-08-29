@@ -7,6 +7,7 @@ import './scss/app.scss';
 import { CartContextProvider } from './custom-context/CartContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cart from './components/cart/Cart';
+import booksDB from './services/firestore';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
             <Route path='/category/:tipo' element={<ItemListContainer />} />
             <Route path='/item/:id' element={<ItemDetailContainer />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='*' element={<h1>No encontrado</h1>} />
+            <Route path='/404' element={<h1>No encontrado</h1>} />
           </Routes>
         </CartContextProvider>
       </BrowserRouter>

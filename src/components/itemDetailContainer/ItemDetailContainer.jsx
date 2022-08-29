@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import ItemDetail from '../itemDetail/ItemDetail'
-import productos from '../../productos/productos'
 import { useParams } from 'react-router-dom'
+//components
+import ItemDetail from '../itemDetail/ItemDetail'
+//firebase
+import booksDB from '../../services/firestore'
+import { getDocs, collection } from 'firebase/firestore'
 
 function ItemDetailContainer() {
   const [producto, setProducto] = useState({})
@@ -9,7 +12,15 @@ function ItemDetailContainer() {
 
   function getProducto() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(productos), 1)
+      const booksList = collection(booksDB, "libros")
+      getDocs(booksList).then(result => {
+        const dataBooks = result.docs.map(doc => {
+          return (
+            { ...doc.data(), id: doc.id }
+          )
+        })
+        resolve(dataBooks);
+      })
     })
   }
 
@@ -17,7 +28,7 @@ function ItemDetailContainer() {
     getProducto()
       .then(
         (respuesta) => {
-          setProducto(respuesta.find(prod => prod.id === parseInt(params.id)))
+          setProducto(respuesta.find(prod => prod.id.toString() === params.id.toString()))
         }
       ).catch(
         (err) => console.log(err)
@@ -33,10 +44,9 @@ function ItemDetailContainer() {
             <div className="spinner-border text-dark" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
-          </div>
-          : <ItemDetail producto={producto} />
+          </div> :
+          <ItemDetail producto={producto} key={producto.id} />
       }
-
     </div>
   )
 }
