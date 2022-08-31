@@ -1,64 +1,73 @@
-.desactivado{
+.desactivado {
     display: none;
 }
-.total-a-pagar{
+
+.total-a-pagar {
     text-align: center;
 }
-.btn{
+
+.btn {
     display: block;
     margin: 0 auto;
 }
+
 .cart-content {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-around;
+    align-items: center;
 
     .lista-productos-cart {
         display: flex;
         border: solid 1px #999;
         border-radius: 10px;
+        width: 500px;
+        height: 250px;
         gap: 10px;
         padding: 10px 15px;
         margin: 20px;
 
-        .parte-superior-cart {
-            display: flex;
-            gap: 5px;
 
-            .img-producto-cart {
-                width: 150px;
-                border-radius: 50%;
+        .img-producto-cart {
+            width: 150px;
+        }
+
+        .book-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            flex-grow: 1;
+
+            .titulo {
+                font-size: 1.5rem;
+                color: #222;
+                text-align: center;
             }
 
-        }
+            .cantidad {
+                font-size: 1.2rem;
+                text-align: center;
+            }
 
-        .tipo-producto-cart {
-            font-size: 2rem;
-            color: #222;
-            text-align: center;
-        }
+            .precio {
+                text-align: center;
+            }
 
-        .cantidad-prod-agr {
-            font-size: 1.2rem;
-            text-align: center;
-        }
+            .btn-eliminar {
+                justify-self: flex-end;
+                align-self: flex-end;
+                border: none;
+                width: 120px;
+                height: 40px;
+                border-radius: 5px;
+                background: linear-gradient(#141e30, #243b55);
+                color: #fff;
 
-        .precio-prod-agr {
-            text-align: center;
-        }
-    }
-
-    .btn-eliminar {
-        align-self: flex-end;
-        border: none;
-        width: 120px;
-        height: 40px;
-        border-radius: 5px;
-        background-color: #222;
-        color: #fff;
-
-        &:hover {
-            background-color: #333;
+                &:hover {
+                    background-color: #333;
+                }
+            }
         }
     }
 

@@ -1,41 +1,56 @@
 .contenedor-procuts {
-    width: 300px;
+    width: 60vw;
+    max-height: 400px;
+
     .producto {
         display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
+        border-radius: 10px 10px 0 0;
         margin-top: 100px;
-        width: 100%;
-        min-height: 100px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 30px;
-        padding: 10px;
-        background-color: #333;
-        color: $color-text-nav;
+        padding: 20px 10px;
+        gap: 10px;
+        border-bottom: solid 1px rgb(195, 195, 195);
 
-        h4{
-            padding: 10px;
+        img {
+            max-height: 20vh;
         }
-        p {
-            font-size: 1rem;
-            margin: 0;
+
+        .content-data {
+            border-right: solid 1px rgb(202, 201, 201);
+            flex-grow: 1;
+
+            h4 {
+                padding: 10px;
+                color: #333;
+            }
+
+            p {
+                font-size: 1rem;
+                margin: 0;
+                color: #333;
+            }
+            .resenia{
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-height: 100px;
+            }
+
         }
-        img{
-            width: 290px;
-        }
-        .btn-detalle{
-            border: none;
-            font-size: 1rem;
-            background-color: none;
+
+        .btn-detalle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+            min-width: 140px;
+            height: 40px;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 1.2rem;
             color: white;
             text-decoration: none;
-            background-color: #333;
-            padding: 5px 15px;
-            border: solid 1px #eee;
-            border-radius: 10px;
-            margin: 15px 0;
-            &:hover{
+            background: linear-gradient(#141e30, #243b55);
+            &:hover {
                 transform: scale(1.03);
             }
         }

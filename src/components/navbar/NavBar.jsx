@@ -1,6 +1,46 @@
 import CartWidget from "../cartWidget/CartWidget";
+import logo from '../../img-logo/logo.jpg'
 import { Link, NavLink } from 'react-router-dom';
+import booksDB from '../../services/firestore';
+import { getDocs, collection } from 'firebase/firestore'
+import { useEffect, useState } from "react";
 function NavBar() {
+    const [items, setItems] = useState([]);
+    function traerProductos() {
+        return new Promise((resolve, reject) => {
+            const booksCollection = collection(booksDB, "libros");
+            getDocs(booksCollection).then(result => {
+                const dataBooks = result.docs.map(doc => {
+                    return { ...doc.data(), id: doc.id }
+                })
+                resolve(dataBooks);
+            });
+        });
+    }
+
+    useEffect(() => {
+        traerProductos()
+            .then((respuesta) => {
+                setItems(respuesta)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
+    function arrFilter() {
+        let arr = []
+
+        items.forEach(book => {
+            arr.push(book.year);
+        })
+
+        const arrFiltrado = arr.filter((valor, indice) => {
+            return arr.indexOf(valor) === indice;
+        }
+        );
+        return arrFiltrado;
+    }
 
     return (
         <nav className="navbar navbar-expand-lg">
@@ -13,25 +53,21 @@ function NavBar() {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <NavLink className={({ isActive }) => isActive ? "btn-nav-activado" : "btn-nav"} aria-current="page" to="/">
-                                Productos
+                                Biblioteca
                             </NavLink>
                         </li>
                         <li className="nav-item dropdown">
                             <NavLink className={"btn-nav dropdown-toggle"} to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Filtrar por tipo
+                                Filtrar por año
                             </NavLink>
                             <ul className="dropdown-menu">
-                                <li><Link className="dropdown-item" to="/category/Stone">Stone</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Granite">Granite</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Vinyl">Vinyl</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Glass">Glass</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Plexiglass">Plexiglass</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Steel">Steel</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Brass">Brass</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Wood">Wood</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Aluminum">Aluminum</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Plastic">Plastic</Link></li>
-                                <li><Link className="dropdown-item" to="/category/Rubber">Rubber</Link></li>
+                                {
+                                    arrFilter().sort(function (a, b) { return a - b }).map(link => {
+                                        return (
+                                            <li><Link className="dropdown-item" to={`/category/${link}`}>{link}</Link></li>
+                                        )
+                                    })
+                                }
                             </ul>
                         </li>
                     </ul>

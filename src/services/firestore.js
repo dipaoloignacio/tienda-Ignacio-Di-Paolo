@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import obras from "../productos/booksData";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBZSAnkjFvPGdJLLljaZXRl8OQTF9Ao_OE",
@@ -14,4 +15,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const booksDB = getFirestore(app);
 
+export async function saveBooksToFirebase(){
+  const collectionBooks =collection(booksDB, "libros")
+
+  for (const book of obras) {
+    const docref = await addDoc(collectionBooks, book)
+    console.log(docref.id);
+  }
+}
 export default booksDB;

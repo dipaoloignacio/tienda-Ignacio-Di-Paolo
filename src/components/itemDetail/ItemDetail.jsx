@@ -34,18 +34,20 @@ function ItemDetail({ producto }) {
     <div className='producto-detail'>
       <img src={producto.img} alt="" />
       <div className='content-details'>
-        <h1>{producto.name}</h1>
-        <p>disponibilidad: {producto.stock} u.</p>
-        <p>precio: ${producto.precio}</p>
-        <p>peso: {producto.peso} kg</p>
-        <p>Made in: {producto.madeIn}</p>
-        <p>metodo de pago aceptado: {producto.tajetaPago}</p>
+        <h1>"{producto.titulo}"</h1>
+        <p className='p-2'>"{producto.resenia}"</p>
+        <p className='pb-2'>anio: <strong>{producto.year}</strong></p>
+        <p className='pb-2'>disponibilidad: <strong>{producto.stock} u.</strong></p>
+        <p className='pb-2'>precio: <strong>${producto.price}</strong></p>
         {
           addProduct === 0 ?
-            < ItemCount
+            <div className='count'>
+               < ItemCount
               stock={producto.stock}
               addItem={addItem}
               id={producto.id} />
+              </div>
+
             : <Link className='toCart' to="/cart">Ir al carro</Link>
         }
       </div>

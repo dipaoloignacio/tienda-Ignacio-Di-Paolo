@@ -1,14 +1,11 @@
 .container-count-items {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    border: solid 1px #111;
-    background-color: #eee;
 
     .count-items {
         display: flex;
         justify-content: space-evenly;
-        border-bottom: solid 1px #111;
+        border-bottom: solid 1px #999;
         list-style: none;
         padding: 0;
         padding: 10px 15px;
@@ -20,17 +17,21 @@
 
             button {
                 width: 100%;
-                color: #057;
+                color: #294b73;
+                font-size: 20px;
                 border: none;
+                background-color: transparent;
             }
         }
         .contador-prod-agr{
-            color: #111;
+            color: #294b73;
+            font-size: 25px;
         }
     }
 
     .btn-agregar {
-        color: #057;
+        color:  #042b57;
+        font-size: 20px;
         padding: 10px 15px;
         text-decoration: none;
         text-align: center;

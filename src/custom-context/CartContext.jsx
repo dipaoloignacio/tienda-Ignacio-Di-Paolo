@@ -35,13 +35,22 @@ export function CartContextProvider({ children }) {
         setCart(carrito);
     }
 
-    function deleteCart(){
+    function deleteCart() {
         let carrito = [...cart]
-        carrito.splice(0,carrito.length);
+        carrito.splice(0, carrito.length);
         setCart(carrito);
     }
+
+    function toPay() {
+        let totalToPay = 0;
+        cart.forEach(book => {
+            totalToPay += (book.price * book.cantidad)
+        })
+        return totalToPay;
+    }
+
     return (
-        <cartContex.Provider value={{ cart, agregarAlCarro, deleteItem, deleteCart }}>
+        <cartContex.Provider value={{ cart, agregarAlCarro, deleteItem, deleteCart, toPay }}>
             {children}
         </cartContex.Provider>
     )

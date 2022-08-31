@@ -3,22 +3,16 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { cartContex } from '../../custom-context/CartContext';
 import Swal from 'sweetalert2';
+import UserForm from '../userForm/UserForm';
 
 function Cart() {
-  const { cart, deleteItem, deleteCart } = useContext(cartContex);
-  let totalPagar = 0;
-  let aux = false
+  const { cart, deleteItem, deleteCart, toPay } = useContext(cartContex);
 
   function eliminar(indice) {
     deleteItem(indice);
   }
 
-  function totalToPay(price) {
-    totalPagar += price
-  }
-
   function vaciarCarro() {
-
     Swal.fire({
       title: 'Estas seguro?',
       text: "Vaciar el carro no tiene vuelta atras!",
@@ -37,38 +31,37 @@ function Cart() {
         )
       }
     })
-
   }
   return (
     <div>
-
       <div className='cart-content'>
         {
           cart.length > 0 ?
             cart.map((producto, indice) => {
-              let toPay = (producto.precio * producto.cantidad);
-              totalToPay(toPay);
+              let toPay = (producto.price * producto.cantidad);
 
               return (
                 <div className='lista-productos-cart'>
-                  <div className='parte-superior-cart'>
-                    <img className='img-producto-cart' src={producto.img} alt="" />
+                  <img className='img-producto-cart' src={producto.img} alt="" />
+                  <div className="book-content"><h5 className='titulo'>"{producto.titulo}"</h5>
+                    <p className='cantidad' >Cantidad: {producto.cantidad}</p>
+                    <p className='precio' >A pagar de este producto:  <span className='fs-5 fw-bold'>${toPay}</span> </p>
+                    <button className='btn-eliminar' onClick={() => eliminar(indice)}> Elliminar </button>
                   </div>
-                  <div className='parte-inferior-cart'>
-                    <h5 className='tipo-producto-cart'>"{producto.name}"</h5>
-                    <h5><span>Made in: </span>{producto.madeIn}</h5>
-                    <p className='cantidad-prod-agr' >Cantidad: {producto.cantidad}</p>
-                    <p className='precio-prod-agr' >A pagar: $ <span className='fs-5'>{toPay}</span> </p>
-                  </div>
-                  <button className='btn-eliminar' onClick={() => eliminar(indice)}> Elliminar </button>
                 </div>
               );
-            }) : <div className='msg-empty'>Carrito vacio <Link to='/'>compra aqui</Link></div>
+            }) : <div className='msg-empty'> Carrito vacio <Link to='/'>compra aqui</Link></div>
         }
       </div>
-      <h1 className={cart.length > 0 ? 'total-a-pagar' : 'desactivado'}>Total a pagar: ${totalPagar}</h1>
-      <button className={cart.length > 0 ? 'btn btn-danger mt-5' : 'desactivado'} onClick={vaciarCarro}>Vaciar carrito</button>
-    </div>
+      {
+        cart.length > 0 ?
+          <div>
+            <h1 className='total-a-pagar'>total: ${toPay()}</h1>
+            <button className='btn btn-danger mt-5' onClick={vaciarCarro}>Vaciar carrito</button>
+            <UserForm />
+          </div> : ''
+      }
+    </div >
   )
 }
 

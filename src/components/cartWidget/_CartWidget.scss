@@ -1,7 +1,16 @@
 .icon-market{
     font-size: 40px;
     margin-left: 20px;
-    color: #aaa;
+    color: #fff;
+}
+.carrito{
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #eee;
+    &:hover{
+        color: #fff;
+    }
 }
 .null{
     display: none;
