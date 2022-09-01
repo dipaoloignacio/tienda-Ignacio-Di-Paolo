@@ -9,6 +9,7 @@ import './scss/app.scss';
 import { CartContextProvider } from './custom-context/CartContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cart from './components/cart/Cart';
+
 function App() {
 
   return (

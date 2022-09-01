@@ -55,11 +55,12 @@ function PurchaseCompleted() {
               }
             </ul>
             <p>Por un total de : $ <strong className='fs-5'>{buyer[0].toPay}</strong></p>
+            <p> Tu ID de seguimiento es : <strong> {buyer[0].id}</strong></p>
             <p>
               Having trouble? <a href="https://bootstrapcreative.com/">Contact us</a>
             </p>
             <p className="lead ">
-              <Link className="btn btn-dark w-25" to="/" role="button">continuar comprando</Link>
+              <Link className="btn btn-dark w-25" to="/" role="button">Continuar comprando</Link>
             </p>
           </div>
       }

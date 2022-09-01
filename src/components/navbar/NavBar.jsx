@@ -1,11 +1,12 @@
 import CartWidget from "../cartWidget/CartWidget";
-import logo from '../../img-logo/logo.jpg'
 import { Link, NavLink } from 'react-router-dom';
 import booksDB from '../../services/firestore';
 import { getDocs, collection } from 'firebase/firestore'
 import { useEffect, useState } from "react";
+
 function NavBar() {
     const [items, setItems] = useState([]);
+
     function traerProductos() {
         return new Promise((resolve, reject) => {
             const booksCollection = collection(booksDB, "libros");

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cartContex } from '../../custom-context/CartContext'
-import { getDocs, collection, addDoc, query, where, writeBatch, documentId } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import booksDB from '../../services/firestore';
 
 function UserForm() {
@@ -28,10 +28,6 @@ function UserForm() {
         navigate(`/purchase/${docref.id}`);
     }
 
-    function handleReset(e) {
-
-    }
-
     function inputChangeHandler(e) {
         const input = e.target;
         const value = input.value;
@@ -47,7 +43,7 @@ function UserForm() {
         <div>
             <div className="login-box">
                 <h2>Terminar compra</h2>
-                <form onReset={handleReset} onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className="user-box">
                         <label htmlFor="name"></label>
                         <input
@@ -88,7 +84,6 @@ function UserForm() {
                         <span></span>
                         Comprar
                     </button>
-
                 </form>
             </div>
         </div>
