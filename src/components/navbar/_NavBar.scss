@@ -1,6 +1,10 @@
 .navbar {
     background: linear-gradient(#141e30, #243b55);
 
+    span{
+        justify-self: center;
+        align-self: center;
+    }
     ul {
         .nav-item {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

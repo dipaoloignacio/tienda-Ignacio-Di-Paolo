@@ -46,7 +46,7 @@ function PurchaseCompleted() {
               {
                 buyer[0].books.map(book => {
                   return (
-                    <li className='mt-4 mb-3 d-flex gap-3'>
+                    <li key={book.id} className='mt-4 mb-3 d-flex gap-3'>
                       <img style={{ width: '50px' }} src={book.img} alt="" />
                       <h6 >"{book.titulo}"</h6>
                     </li>

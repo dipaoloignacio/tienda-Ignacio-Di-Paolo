@@ -46,7 +46,7 @@ function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/cart"><CartWidget /></Link>
+                <span><CartWidget /></span>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -65,7 +65,7 @@ function NavBar() {
                                 {
                                     arrFilter().sort(function (a, b) { return a - b }).map(link => {
                                         return (
-                                            <li><Link className="dropdown-item" to={`/category/${link}`}>{link}</Link></li>
+                                            <li key={link}><Link className="dropdown-item" to={`/category/${link}`}>{link}</Link></li>
                                         )
                                     })
                                 }

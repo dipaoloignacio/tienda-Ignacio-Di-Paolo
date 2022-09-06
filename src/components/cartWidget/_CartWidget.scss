@@ -1,8 +1,10 @@
 .icon-market{
+    display: flex;
     font-size: 40px;
     margin-left: 20px;
     color: #fff;
 }
+
 .carrito{
     text-decoration: none;
     font-size: 1.5rem;
@@ -11,7 +13,4 @@
     &:hover{
         color: #fff;
     }
-}
-.null{
-    display: none;
 }

@@ -30,6 +30,7 @@ function ItemListContainer() {
 
   useEffect(() => {
     setLoading(1)
+    window.scrollTo(0,0);
     traerProductos()
       .then((respuesta) => {
         if (params.year === undefined) {
@@ -80,11 +81,11 @@ function ItemListContainer() {
                     <button onClick={() => prev()} className="page-link text-dark">Anterior</button>
                   </li>
                   {
-                    arr.map(pagination => <li className="page-item">
+                    arr.map(pagination => <li key={pagination} className="page-item">
                       <button onClick={() => setPagination(pagination)} className="page-link text-dark">{pagination}</button>
                     </li>)
                   }
-                  <li class="page-item">
+                  <li className="page-item">
                     <button onClick={next} className="page-link text-dark">Siguiente</button>
                   </li>
                 </ul>

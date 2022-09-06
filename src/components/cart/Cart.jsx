@@ -16,17 +16,17 @@ function Cart() {
     Swal.fire({
       title: 'Estas seguro?',
       text: "Vaciar el carro no tiene vuelta atras!",
-      icon: 'cuidado',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#141e30',
       confirmButtonText: 'Si, vaciar!'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
           'vaciado!',
           'Su carrito fue vaciado con exito.',
-          'exitoso',
+          'success',
           deleteCart()
         )
       }
@@ -41,7 +41,7 @@ function Cart() {
               let toPay = (producto.price * producto.cantidad);
 
               return (
-                <div className='lista-productos-cart'>
+                <div key={indice} className='lista-productos-cart'>
                   <img className='img-producto-cart' src={producto.img} alt="" />
                   <div className="book-content"><h5 className='titulo'>"{producto.titulo}"</h5>
                     <p className='cantidad' >Cantidad: {producto.cantidad}</p>

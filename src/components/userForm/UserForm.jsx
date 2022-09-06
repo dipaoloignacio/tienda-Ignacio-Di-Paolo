@@ -43,6 +43,7 @@ function UserForm() {
         <div>
             <div className="login-box">
                 <h2>Terminar compra</h2>
+                {/* El formulario no tiene validacion, se puede mandar vacio. Estoy en otro proyecto trabajando en eso con Formik :D */}
                 <form onSubmit={handleSubmit}>
                     <div className="user-box">
                         <label htmlFor="name"></label>
@@ -77,7 +78,7 @@ function UserForm() {
                             placeholder='  email...'
                             required />
                     </div>
-                    <button className='button' onTouch={handleSubmit} type='submit' href="#">
+                    <button className='button' onClick={handleSubmit} type='submit' href="#">
                         <span></span>
                         <span></span>
                         <span></span>

@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 function CartWidget() {
-  const { cart,toPay } = useContext(cartContex);
+  const { cart } = useContext(cartContex);
 
   let cantidad = 0;
   let totalPagar = 0;
@@ -18,10 +18,9 @@ function CartWidget() {
 
   return (
     <>
-      <div className={`${cantidad === 0 ? 'null' : 'icon-market'}`}>
-        <FontAwesomeIcon icon={faCartShopping} />
-        {cantidad}
-        <Link className='carrito' to='/cart'> Carrito</Link>
+      <div className={`${cantidad === 0 ? 'd-none' : 'icon-market'}`}>
+        <Link className='carrito' to='/cart'> <FontAwesomeIcon icon={faCartShopping} />
+          {cantidad} Carrito</Link>
       </div>
     </>
   )
