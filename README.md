@@ -10,7 +10,27 @@
 <li>JavaScript</li>
 </ul><ul>
 <li>React</li>
-</ul><h2>Project Status</h2>
+</ul><h2>Setup</h2>
+<hr><p>Dependencias del proyecto.
+"dependencies": {
+"@fortawesome/fontawesome-svg-core": "^6.1.2",
+"@fortawesome/free-brands-svg-icons": "^6.1.2",
+"@fortawesome/free-solid-svg-icons": "^6.1.2",
+"@fortawesome/react-fontawesome": "^0.2.0",
+"@popperjs/core": "^2.11.5",
+"@testing-library/jest-dom": "^5.16.4",
+"@testing-library/react": "^13.3.0",
+"@testing-library/user-event": "^13.5.0",
+"bootstrap": "^5.2.0",
+"firebase": "^9.9.3",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-router-dom": "^6.3.0",
+"react-scripts": "5.0.1",
+"sass": "^1.54.0",
+"sweetalert2": "^11.4.26",
+"web-vitals": "^2.1.4"
+},</p><h2>Project Status</h2>
 <hr><p>El proyecto se encuentra en progreso de desarrollo</p><h2>Acknowledgement</h2>
 <hr><ul>
 <li>Este proyecto fue inspirado gracias al curso de Coder House.</li>
