@@ -33,7 +33,7 @@ function ItemDetailContainer() {
       ).catch(
         (err) => console.log(err)
       );
-  }, [])
+  }, [params.id]);
 
   return (
     <div className='container-item'>

@@ -26,7 +26,7 @@ function PurchaseCompleted() {
       .then((respuesta) => {
         setBuyer(respuesta.filter(buyer => buyer.id.toString() === params.id.toString()));
       })
-  }, []);
+  }, [params.id]);
 
   return (
     <div>

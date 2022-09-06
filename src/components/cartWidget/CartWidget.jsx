@@ -4,17 +4,16 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { cartContex } from '../../custom-context/CartContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function CartWidget() {
   const { cart } = useContext(cartContex);
-
   let cantidad = 0;
-  let totalPagar = 0;
 
   cart.forEach(producto => {
     cantidad += producto.cantidad
-    totalPagar += (producto.price * producto.cantidad)
   });
+  console.log(cantidad)
 
   return (
     <>
