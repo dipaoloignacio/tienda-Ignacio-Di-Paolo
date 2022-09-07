@@ -42,11 +42,11 @@ function ItemDetail({ producto }) {
         {
           addProduct === 0 ?
             <div className='count'>
-               < ItemCount
-              stock={producto.stock}
-              addItem={addItem}
-              id={producto.id} />
-              </div>
+              < ItemCount
+                stock={producto.stock}
+                addItem={addItem}
+              />
+            </div>
 
             : <Link className='toCart' to="/cart">Ir al carro</Link>
         }

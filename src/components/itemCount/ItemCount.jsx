@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-function ItemCount({ stock, addItem, id }) {
+function ItemCount({ stock, addItem }) {
     const [countItems, setCountItems] = useState(1);
 
-    const agrCarro = (id) => {
-        addItem(countItems, id)
+    const agrCarro = () => {
+        addItem(countItems)
         setCountItems(1);
     }
 
@@ -24,7 +24,7 @@ function ItemCount({ stock, addItem, id }) {
                     <button onClick={() => countItems > 1 ? setCountItems(countItems - 1) : setCountItems(1)}><FontAwesomeIcon icon={faMinus} /> </button>
                 </li>
             </ul>
-            <Link className='btn-agregar' to="#" onClick={() => agrCarro(id)}>Agregar al carro</Link>
+            <Link className='btn-agregar' to="#" onClick={() => agrCarro()}>Agregar al carro</Link>
         </div>
     )
 }

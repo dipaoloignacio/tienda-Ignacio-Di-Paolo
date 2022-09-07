@@ -7,14 +7,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import './scss/app.scss';
 import { CartContextProvider } from './custom-context/CartContext';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Cart from './components/cart/Cart';
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <CartContextProvider>
           <NavBar />
           <Routes>
@@ -24,9 +24,10 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/purchase/:id' element={<PurchaseCompleted />} />
             <Route path='/404' element={<Err404 />} />
+            <Route path='*' element={<Err404 />} />
           </Routes>
         </CartContextProvider>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
