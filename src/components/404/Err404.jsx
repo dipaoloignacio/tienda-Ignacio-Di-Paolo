@@ -9,7 +9,6 @@ function err404() {
                 <Link to={"/"} className='btn btn-danger'>Seguir comprando</Link>
             </article>
         </section>
-
     )
 }
 
