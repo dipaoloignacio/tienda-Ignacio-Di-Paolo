@@ -29,7 +29,7 @@ function UserForm() {
         <div>
             <div className="login-box">
                 <h2>Terminar compra</h2>
-
+                {/* Formulario hecho y validado con la libreria de Formik */}
                 <Formik
                     initialValues={{
                         name: '',
