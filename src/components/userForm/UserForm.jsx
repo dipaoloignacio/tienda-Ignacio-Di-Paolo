@@ -1,91 +1,128 @@
-import React, { useState } from 'react'
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react'
 import { cartContex } from '../../custom-context/CartContext'
+import { useNavigate } from 'react-router-dom';
+//firestore
 import { collection, addDoc } from 'firebase/firestore'
 import booksDB from '../../services/firestore';
+//Formik
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 function UserForm() {
     const { toPay, cart, deleteCart } = useContext(cartContex);
     const navigate = useNavigate();
-    const [userData, setUserData] = useState({
-        name: '',
-        email: '',
-        telefono: ''
-    });
 
-    const buyOrder = {
-        buyer: { ...userData },
-        books: [...cart],
-        toPay: toPay()
-    }
+    async function handleSubmit(values) {
 
-    async function handleSubmit(e) {
-        e.preventDefault();
+        const buyOrder = {
+            buyer: { ...values },
+            books: [...cart],
+            toPay: toPay()
+        }
+
         const collectionRef = collection(booksDB, "order");
         const docref = await addDoc(collectionRef, buyOrder);
         deleteCart();
         navigate(`/purchase/${docref.id}`);
     }
 
-    function inputChangeHandler(e) {
-        const input = e.target;
-        const value = input.value;
-        const inputName = input.name;
-
-        let copyUserData = { ...userData };
-
-        copyUserData[inputName] = value;
-        setUserData(copyUserData);
-    }
-
     return (
         <div>
             <div className="login-box">
                 <h2>Terminar compra</h2>
-                {/* El formulario no tiene validacion, se puede mandar vacio. Estoy en otro proyecto trabajando en eso con Formik :D */}
-                <form onSubmit={handleSubmit}>
-                    <div className="user-box">
-                        <label htmlFor="name"></label>
-                        <input
-                            className='inputs'
-                            value={userData.name}
-                            onChange={inputChangeHandler}
-                            name='name'
-                            type="text"
-                            placeholder='  nombre...'
-                            required />
-                    </div>
-                    <div className="user-box">
-                        <label htmlFor="telefono"></label>
-                        <input
-                            className='inputs'
-                            value={userData.telefono}
-                            onChange={inputChangeHandler}
-                            name='telefono'
-                            type="text"
-                            placeholder='  telefono...'
-                            required />
-                    </div>
-                    <div className="user-box">
-                        <label htmlFor="email"></label>
-                        <input
-                            className='inputs'
-                            value={userData.email}
-                            onChange={inputChangeHandler}
-                            name='email'
-                            type="text"
-                            placeholder='  email...'
-                            required />
-                    </div>
-                    <button className='button' onClick={handleSubmit} type='submit' href="#">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Comprar
-                    </button>
-                </form>
+
+                <Formik
+                    initialValues={{
+                        name: '',
+                        email: '',
+                        telefono: '',
+                        emailRepetido: ''
+                    }}
+                    validate={(values) => {
+                        let errores = {}
+                        if (!values.name) {
+                            errores.name = 'el nombre no puede estar vacio'
+                        }
+                        if (!values.telefono) {
+                            errores.telefono = 'ingresa un telefono'
+                        }
+                        if (!values.email) {
+                            errores.email = 'ingresa un correo'
+                        }
+                        if (values.emailRepetido !== values.email) {
+                            errores.telefono = 'los emails no concuerdan'
+                        }
+                        return errores;
+                    }}
+
+                    onSubmit={(values) => {
+
+                        const valuesBuyer = {
+                            name: values.name,
+                            email: values.email,
+                            telefono: values.telefono,
+                        }
+
+                        handleSubmit(valuesBuyer);
+                    }}
+                >
+                    {
+                        ({ errors }) => (
+                            <Form >
+                                <div className="user-box">
+                                    <Field
+                                        className='inputs'
+                                        name='name'
+                                        type="text"
+                                        placeholder='  nombre...'
+                                        required />
+                                    <ErrorMessage name='name' component={() => (
+                                        <div style={{ color: '#03e9f4' }}>{errors.name}</div>
+                                    )} />
+                                </div>
+                                <div className="user-box">
+                                    <Field
+                                        className='inputs'
+                                        name='telefono'
+                                        type="text"
+                                        placeholder='  telefono...'
+                                    />
+                                    <ErrorMessage name='telefono' component={() => (
+                                        <div style={{ color: '#03e9f4' }}>{errors.telefono}</div>
+                                    )} />
+                                </div>
+                                <div className="user-box">
+                                    <Field
+                                        className='inputs'
+                                        name='email'
+                                        type="text"
+                                        placeholder='  email...'
+                                    />
+                                    <ErrorMessage name='email' component={() => (
+                                        <div style={{ color: '#03e9f4' }}>{errors.email}</div>
+                                    )} />
+                                </div>
+                                <div className="user-box">
+                                    <Field
+                                        className='inputs'
+                                        name='emailRepetido'
+                                        type="text"
+                                        placeholder=' repetir  email...'
+                                    />
+                                    <ErrorMessage name='emailRepetido' component={() => (
+                                        <div style={{ color: '#03e9f4' }}>{errors.emailRepetido}</div>
+                                    )} />
+                                </div>
+                                <button className='button' value="Send" type='input' href="#">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    Comprar
+                                </button>
+                            </Form>
+                        )
+                    }
+                </Formik>
             </div>
         </div>
     )
